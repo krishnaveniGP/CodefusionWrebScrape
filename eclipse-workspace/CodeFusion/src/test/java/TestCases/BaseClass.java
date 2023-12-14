@@ -8,7 +8,6 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -37,18 +36,18 @@ public class BaseClass {
 //	public String url=read.getUrl1();
 	public static Logger logger;
 	ResourceBundle rb;
-	@Parameters("browser")
+	
 	@BeforeClass
-	public void setUp(String br)
+	public void setUp()
 	
 	{
 		logger=Logger.getLogger("WebScrapehackthon");
-	    //PropertyConfigurator.configure(System.getProperty("user.dir")+"/test-output/Log4j.properties");
-		//prop=read.initProp();
+	    
 		rb=ResourceBundle.getBundle("config");
+		String br=rb.getString("browser");
 	    if(br.equals("chrome"))
 		{
-         WebDriverManager.chromedriver().setup();
+         //WebDriverManager.chromedriver().setup();
 	
 		driver=new ChromeDriver();
 		}
@@ -83,17 +82,8 @@ public class BaseClass {
 		FileUtils.copyFile(source, target);
 		System.out.println("screenshot taken");
 	}
-	public String randomString()
-	{
-		String randomstring=RandomStringUtils.randomAlphabetic(8);
-		return randomstring;
-		
-	}
-	public String randomNUm() 
-	{
-		String randomnum=RandomStringUtils.randomNumeric(10);
-		return randomnum;
-	}
+	
+	
 	 public void selectOptionFromSortLit(By options, String text) {
 	        List<WebElement> allOptions = driver.findElements(options);
 	        String option;

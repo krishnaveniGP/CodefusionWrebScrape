@@ -16,10 +16,7 @@ public class DiabetisTest extends BaseClass{
 	{
 		
 
-		rcpHome.searchRecipe();
-		rcpHome.click_searchbutton();
-		rcpHome.clickVeganRecipeList();
-		rcpHome.getVeganRecipeList();
+		
 		
 	}
 	
